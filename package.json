@@ -1,0 +1,16 @@
+{
+  "name"                 : "template-typescript",
+  "license"              : "MIT-0",
+  "repository"           : "github:chykon/template-typescript",
+  "version"              : "0.1.0-prototype.1",
+
+  "scripts": {
+    "tsc"                : "tsc",
+    "tsc-watch"          : "tsc --watch"
+  },
+
+  "devDependencies": {
+    "typescript"         : "^4.7.3",
+    "ts-standard"        : "^11.0.0"
+  }
+}
