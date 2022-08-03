@@ -78,15 +78,16 @@ module UTF8Decoder
           lower_boundary <= 'h80;
           upper_boundary <= 'hBF;
           status <= STATUS_ERROR;
-        end
-        lower_boundary <= 'h80;
-        upper_boundary <= 'hBF;
-        code_point <= (code_point << 6) | (reg_byte & 'h3F);
-        bytes_seen <= bytes_seen + 1;
-        if (bytes_seen == bytes_needed) begin
-          bytes_needed <= 0;
-          bytes_seen <= 0;
-          status <= STATUS_READY;
+        end else begin
+          lower_boundary <= 'h80;
+          upper_boundary <= 'hBF;
+          code_point <= (code_point << 6) | (reg_byte & 'h3F);
+          bytes_seen <= bytes_seen + 1;
+          if ((bytes_seen + 1) == bytes_needed) begin
+            bytes_needed <= 0;
+            bytes_seen <= 0;
+            status <= STATUS_READY;
+          end
         end
       end
     end

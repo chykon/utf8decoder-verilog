@@ -3,11 +3,15 @@
   "license": "MIT-0",
   "repository": "github:chykon/utf8decoder-verilog",
   "version": "0.1.0-prototype.1",
-
+  "type": "module",
   "scripts": {
-    "precompile": "mkdir -p build/iverilog",
-    "compile": "cd src && iverilog -gspecify -gstrict-ca-eval -gstrict-expr-width -gno-shared-loop-index -Wall -o../build/iverilog/main.vvp main.v",
-    "simulate": "vvp build/iverilog/main.vvp",
-    "go": "npm run precompile && npm run compile && npm run simulate"
+    "tsc": "tsc",
+    "tsc-watch": "tsc --watch",
+    "example-decode_helloworld": "node scripts/tscjs/main.js"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.2",
+    "ts-standard": "^11.0.0",
+    "typescript": "^4.7.3"
   }
 }
