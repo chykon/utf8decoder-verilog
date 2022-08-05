@@ -1,6 +1,8 @@
 import * as fs from 'node:fs'
 import * as cp from 'node:child_process'
 import * as util from 'node:util'
+import * as proc from 'node:process'
+import { testingDemo } from './tests.js'
 
 function prebuild (): void {
   if (!fs.existsSync('build/iverilog')) {
@@ -8,7 +10,7 @@ function prebuild (): void {
   }
 }
 
-function buildExampleDecodeHelloworld (): void {
+function build (inputPath: string): void {
   const setupFlags = [
     '-gspecify',
     '-gstrict-ca-eval',
@@ -17,7 +19,6 @@ function buildExampleDecodeHelloworld (): void {
     '-Wall'
   ].join(' ')
   const outputPath = '-o' + '../build/iverilog/out.vvp'
-  const inputPath = '../examples/decode_helloworld.v'
   cp.execSync(`iverilog ${setupFlags} ${outputPath} ${inputPath}`, {
     cwd: 'src'
   })
@@ -51,10 +52,20 @@ function checkExampleDecodeHelloworld (): void {
 }
 
 function main (): void {
-  prebuild()
-  buildExampleDecodeHelloworld()
-  checkExampleDecodeHelloworld()
-  simulate()
+  const command = proc.argv[2]
+  if (command === 'example-decode_helloworld') {
+    prebuild()
+    build('../examples/decode_helloworld.v')
+    checkExampleDecodeHelloworld()
+    simulate()
+  } else if (command === 'test-demo') {
+    prebuild()
+    build('../tests/demo.v')
+    simulate()
+    testingDemo()
+  } else {
+    throw new Error()
+  }
 }
 
 main()
