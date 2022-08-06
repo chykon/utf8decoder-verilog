@@ -15,6 +15,7 @@ A UTF-8 hardware decoder written in the [Verilog](https://en.wikipedia.org/wiki/
 1. clone the repository
 2. go to clone root directory
 3. execute command "npm install"
+4. execute command "npm run tsc"
 
 ## Usage
 
