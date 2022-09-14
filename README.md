@@ -1,4 +1,6 @@
-# UTF8Decoder-Verilog
+# [UNMAINTEINED] UTF8Decoder-Verilog
+
+## ACTIVE ALTERNATIVE: [UTF8Decoder-HW](https://github.com/chykon/utf8decoder-hw)
 
 A UTF-8 hardware decoder written in the [Verilog](https://en.wikipedia.org/wiki/Verilog). The implementation relies on the [WHATWG: Encoding - "UTF-8 decoder"](https://encoding.spec.whatwg.org/#utf-8-decoder) specification. For synthesis and simulation, [Icarus Verilog](https://github.com/steveicarus/iverilog) is used.
 
